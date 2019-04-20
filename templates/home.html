@@ -1,11 +1,68 @@
-<!-- Getting all html tag from layout.html up until block
-Then all things inside here block will be replace block in layout.html -->
-{% extends "parent.html" %}
-{% block content %}
-    <h1>Hello this is Home PAge Yo</h1>
-    <!-- writing code is possible b.c. jinja2 -->
-    {% for post in p %}
-    <h1>{{ post.author }}</h1>
-    {% endfor %}
-<!-- content is name of the block. -->
-{% endblock content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %} 
+            <title>Mission to Mars</title>
+        {% endif %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+
+    <body class=>
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <a class="btn btn-outline-dark" href="/scrape">Scrape New Data</a>
+        </div>
+        <div>
+            <h3>Latests Mars News</h3>
+            <h6>{{ mars.mars_news[0].news_title }}</h6>
+            <p>{{ mars.mars_news[0].news_desc }}</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <h3> Featured Images</h3>
+                <img src="{{ mars.featured_image }}" style="max-width:100%; max-height: auto;" alt="">
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <h4>Current Weather on Mars</h4>
+                    <p>{{ mars.mars_weather }}</p>
+                    <br>
+                    <br>
+
+                    <h4>Mars Facts</h4>
+                    <div>
+                        <!-- safe tells jinja2 to show it as html tags. -->
+                        {{ mars.table|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top:2rem;">
+            <h3 style="margin-bottom:2rem;">Mars Hemispheres</h3>
+            <div class="row">
+                {% for img in mars.hem_img_url[:2] %}
+                <div class="col-lg-6">
+                    <div>
+                        <img src="{{ img.img_url }}" style="max-width:80%" alt="">
+                        <p>{{ img.title }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                {% for img in mars.hem_img_url[2:] %}
+                <div class="col-lg-6">
+                    <div>
+                        <img src="{{ img.img_url }}" style="max-width:80%" alt="">
+                        <p>{{ img.title }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

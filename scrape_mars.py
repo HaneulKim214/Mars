@@ -9,7 +9,7 @@ def scrape():
 
     # ------------ Scrape data from NASA Mars News ------------
     executable_path = {"executable_path":"chromedriver.exe"}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     # Scrape NASA Mars News Site
     url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
     browser.visit(url)
@@ -90,7 +90,7 @@ def scrape():
 
     final_dict = {
         "mars_news":news_list,
-        "featued_image":featured_image_url,
+        "featured_image":featured_image_url,
         "mars_weather":mars_weather,
         "table": table_html_data,
         "hem_img_url": hemisphere_image_urls
@@ -98,4 +98,4 @@ def scrape():
     # print(final_dict)
     return final_dict
 
-final_dictionary = scrape()
+# final_dictionary = scrape()
