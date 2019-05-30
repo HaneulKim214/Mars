@@ -1,14 +1,23 @@
-# Mars
+# Mission-to-Mars
 
 ## Project Status: Finished
 
-Goal:
+**Part I:**
+* Automated process of webscraping and scraped data from multiple websites such as [NASA Mars News Site](https://mars.nasa.gov/news/), [Mars weather twitter account](https://twitter.com/marswxreport?lang=en), [Mars Facts
+website](https://space-facts.com/mars/), and [USGS Astrogeology site](https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars).
+
+* Since all website had different html I had to inspect each page's html and correctly identify which tags to click and extract.
+
+* At the end of each scraping step I've stored all the data into non-relational database, MongoDB.
+  - Linked python with database to conveniently push and pull data.
  
-- Scrape multiple website related to Mars and store them into Non-relational database.
-- From database appropriately insert data into html tag for visualization.
+**Part II:**
+* From database extracted all needed info and displayed to html page I've created, all data from homepage has been
+scraped and directly displayed from database using Flask.
 
-
+* Added stlying to pages to display data in visually accepting places.
+ 
+ 
 **Programs and Libraries used:**
-- Main coding: Python(bs4, splinter, flask, pymongo, pandas)
-- Visualization: html5
+- Main coding: Python(bs4, splinter, flask, pymongo, pandas), HTML5, CSS3(Bootstrap)
 - Database: MongoDB
