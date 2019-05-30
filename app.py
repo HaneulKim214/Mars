@@ -17,9 +17,10 @@ def home():
 @app.route("/scrape")
 def scraper():
     mars = db.data
+    # Adding to database
     scraped_data = scrape_mars.scrape()
     mars.update_one({}, {"$set":scraped_data}, upsert=True)
     return redirect("/", code=302)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
